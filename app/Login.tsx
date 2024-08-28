@@ -3,23 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet, SafeAreaView, Alert, Touchab
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
-// import { StackNavigationProp } from '@react-navigation/stack';
 
-// type RootStackParamList = {
-//   Login: undefined;
-//   Dashboard: undefined;
-// };
-// type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
-// interface Props {
-//   navigation: LoginScreenNavigationProp;
-// }
-
-interface user {
-  username: string;
-  email: string;
-  image: string;
-}
 
 const loginUser = async (email: any, password: any) => {
   try {
@@ -61,12 +46,23 @@ const LoginScreen: React.FC = () => {
       Alert.alert("Invalid email or password")
     }
 
+    setEmail('');
+    setPassword('');
+
   };
 
   return (
     // <SafeAreaView style={styles.container}>
     <SafeAreaView style={{ flex: 1, backgroundColor: '#e8ecf4' }}>
       <View style={styles.container}>
+
+      {/* Header */}
+      <View style={styles.header}>
+            <Text style={styles.title}>
+               <Text>LOGIN</Text>
+            </Text>
+            
+          </View>
 
         <View style={styles.form}>
           <View style={styles.input}>
@@ -77,7 +73,7 @@ const LoginScreen: React.FC = () => {
               clearButtonMode="while-editing"
               keyboardType="email-address"
               onChangeText={email => setEmail(email)}
-              placeholder="john@example.com"
+              placeholder="abc@example.com"
               placeholderTextColor="#6b7280"
               style={styles.inputControl}
               value={email} />
@@ -109,46 +105,24 @@ const LoginScreen: React.FC = () => {
           </View>
         </View>
       </View>
-
-
-      {/* <View style={styles.innerContainer}>
-          <Text style={styles.label}>Email:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your email"
-            keyboardType="email-address"
-            value={email}
-            onChangeText={(text: any) => setEmail(text)}
-          />
-          <Text style={styles.label}>Password:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your password"
-            secureTextEntry
-            value={password}
-            onChangeText={(text: any) => setPassword(text)}
-          />
-          <Button title="Login" onPress={handleLogin} />
-        </View> */}
     </SafeAreaView >
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  // Header
+  title: {
+    fontSize: 31,
+    fontWeight: '700',
+    marginBottom: 6,
+    color: '#075eec'
+  },
+  header: {
+    alignItems: 'center',
     justifyContent: 'center',
-    padding: 16,
-    backgroundColor: '#f5f5f5',
+    marginVertical: 36,
   },
-  innerContainer: {
-    paddingHorizontal: 24,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 8,
-    color: '#333',
-  },
+
   // Inputs
   input: {
     marginBottom: 16,
@@ -202,6 +176,21 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#fff',
   },
+    // others
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      padding: 16,
+      backgroundColor: '#f5f5f5',
+    },
+    innerContainer: {
+      paddingHorizontal: 24,
+    },
+    label: {
+      fontSize: 16,
+      marginBottom: 8,
+      color: '#333',
+    },
 });
 
 export default LoginScreen;
