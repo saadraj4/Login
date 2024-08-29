@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 // import { createStackNavigator } from '@react-navigation/stack';
 // import { SafeAreaProvider } from 'react-native-safe-area-context';
 import LoginScreen from './Login';
+import SignUp from './SignUp'
 import DashboardScreen from './Dashboard';
 import Notifications from './Notifications';
 
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   return (
         <Drawer.Navigator initialRouteName="Login">
           <Drawer.Screen name="Login" component={LoginScreen} />
+          <Drawer.Screen name="SignUp" component={SignUp} />
           <Drawer.Screen name="Dashboard" component={DashboardScreen} />
           <Drawer.Screen name="Notifications" component={Notifications} />
 
